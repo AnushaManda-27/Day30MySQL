@@ -1,0 +1,91 @@
+UC-8>. 
+
+mysql> SELECT * FROM `address_book` ORDER BY city ASC;
++-----------+----------+-------------+-------+--------+--------------+---------------------+--------+
+| firstName | lastName | city        | state | zip    | phone_Number | email               | emp_id |
++-----------+----------+-------------+-------+--------+--------------+---------------------+--------+
+| Anusha    | Manda    | Hyd         | TG    | 504303 | 8871312779   | anusham@gmail.com   |      1 |
+| Ajith     | kumar    | Hyd         | TG    | 509403 | 7564082244   | ajith@gmail.com     |      2 |
++-----------+----------+-------------+-------+--------+--------------+---------------------+--------+
+2 rows in set (0.05 sec)
+
+**********************************************
+uc-9>.
+
+ALTER TABLE address_book ADD Type CHAR(50) After LastName;
+
+mysql> INSERT INTO address_book (firstName, lastName, Type, city, state, zip, phone_Number, email, emp_id) VALUES
+    ->    ('Pushpa', 'latha', 'Family', 'Hyd', 'TG', '500001', '88713128765', 'pushpa78@gmail.com', 03 );
+
+mysql> update address_book set Type = 'profession' where Firstname = 'Anusha';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update address_book set Type = 'Family' where Firstname = 'Ajith';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> Select * from address_book;
++-----------+----------+------------+-------------+-------+--------+--------------+---------------------+--------+
+| firstName | lastName | Type       | city        | state | zip    | phone_Number | email               | emp_id |
++-----------+----------+------------+-------------+-------+--------+--------------+---------------------+--------+
+| Ajith     | kumar    | Family     | Hyd         | TG    | 504403 | 7564082244   | ajith@gmail.com     |      2 |
+| Anusha    | Manda    | profession | Hyd         | TG    | 509403 | 8871312779   | anusha@gmail.com    |      1 |
+| Pushpa    | Latha    | Family     | Hyd         | TG    | 500003 | 8871312555   | pushpa78@gmail.com  |      3 |
++-----------+----------+------------+-------------+-------+--------+--------------+---------------------+--------+
+3 rows in set (0.01 sec)
+****************************
+UC-10>
+
+mysql> select count(FirstName) from address_book;
++------------------+
+| count(FirstName) |
++------------------+
+|                3 |
++------------------+
+1 row in set (0.01 sec)
+
+****************************************
+
+UC-11>
+
+mysql> INSERT INTO address_book (firstName, lastName, Type, city, state, zip, phone_Number, email, emp_id) VALUES
+    ->    ('Rahul', 'Manda', 'Friend & Family', 'Hyd', 'TG', '546403', '87897987954', 'rahul@gmail.com', 04 );
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_book;
++-----------+----------+-----------------+-------------+-------+--------+--------------+---------------------+--------+
+| firstName | lastName | Type            | city        | state | zip    | phone_Number | email               | emp_id |
++-----------+----------+-----------------+-------------+-------+--------+--------------+---------------------+--------+
+| Ajith     | kumar    | Friend          | Hyd         | TG    | 547403 | 7564082244   | ajith@gmail.com     |      2 |
+| Anusha    | Manda    | profession      | Hyd         | TG    | 547403 | 8871312779   | anusha@gmail.com    |      1 |
+| Pushpa    | Latha    | Family          | Hyd         | TG    | 500003 | 8871312555   | pushpa78@gmail.com  |      3 |
+| Rahul     | Manda    | Friend & Family | Hyd         | MP    | 746403 | 8870312554   | rahul@gmail.com     |      4 |
++-----------+----------+-----------------+-------------+-------+--------+--------------+---------------------+--------+
+4 rows in set (0.00 sec)
+
+*****************************************
+UC-13>
+
+
+mysql> select count(city), count(State), count(firstName) from address_book;
++-------------+--------------+------------------+
+| count(city) | count(State) | count(firstName) |
++-------------+--------------+------------------+
+|           4 |            4 |                4 |
++-------------+--------------+------------------+
+1 row in set (0.01 sec)
+
+
+mysql> SELECT * FROM `address_book` ORDER BY city ASC;
++-----------+----------+-----------------+-------------+-------+--------+--------------+---------------------+--------+
+| firstName | lastName | Type            | city        | state | zip    | phone_Number | email               | emp_id |
++-----------+----------+-----------------+-------------+-------+--------+--------------+---------------------+--------+
+| Ajith     | kumar    | Friend          | Hyd         | TG    | 547403 | 7564082244   | ajith@gmail.com     |      2 |
+| Anusha    | Manda    | profession      | Hyd         | TG    | 547403 | 8871312779   | anusha@gmail.com    |      1 |
+| Pushpa    | Latha    | Family          | Hyd         | TG    | 500003 | 8871312555   | pushpa78@gmail.com  |      3 |
+| Rahul     | Manda    | Friend & Family | Hyd         | MP    | 746403 | 8870312554   | rahul@gmail.com     |      4 |
++-----------+----------+-----------------+-------------+-------+--------+--------------+---------------------+--------+
+4 rows in set (0.00 sec)
+
